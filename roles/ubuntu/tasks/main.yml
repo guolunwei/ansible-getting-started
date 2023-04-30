@@ -1,0 +1,5 @@
+---
+- name: replace repo
+  copy:
+    src: sources.list
+    dest: /etc/apt/sources.list

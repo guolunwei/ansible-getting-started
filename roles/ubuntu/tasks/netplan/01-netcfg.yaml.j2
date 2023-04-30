@@ -1,0 +1,12 @@
+---
+network:
+  version: 2
+  ethernets:
+    ens33:
+      dhcp4: no
+      addresses: [{{ ip_ens33 }}]
+      gateway4: {{ gw_ens33 }}
+      nameservers:
+        addresses: [114.114.114.114,8.8.8.8]
+    ens34:
+      dhcp4: yes

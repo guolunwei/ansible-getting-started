@@ -1,0 +1,8 @@
+[openstack]
+controller ansible_host=10.0.0.11
+compute ansible_host=10.0.0.31
+storage ansible_host=10.0.0.41
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_user=ubuntu

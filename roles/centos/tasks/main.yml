@@ -1,0 +1,12 @@
+---
+- name: replace repo
+  copy:
+    src: CentOS-Base.repo
+    dest: /etc/yum.repos.d/
+    backup: yes
+
+- name: stop firewall
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: no

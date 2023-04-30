@@ -1,0 +1,16 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: yes
+
+  tasks:
+    - include_role: 
+        name: common
+    - include_role: 
+        name: centos
+      when:
+        - ansible_facts['distribution'] =="CentOS"
+    - include_role: 
+        name: ubuntu
+      when:
+        - ansible_facts['distribution'] =="Ubuntu"

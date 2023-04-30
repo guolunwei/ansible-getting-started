@@ -1,0 +1,16 @@
+---
+- hosts: all
+  gather_facts: no
+  become: true
+  
+  tasks:
+    - name: configure netplan
+      template:
+        src: 01-netcfg.yaml.j2
+        dest: /etc/netplan/01-netcfg.yaml
+        backup: yes
+      notify: netplan generate config
+
+  handlers:
+    - name: netplan generate config
+      command: netplan apply
