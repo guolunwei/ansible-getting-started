@@ -1,14 +1,22 @@
 # ansible-getting-started
-To get up and running ansible on managed nodes.
+Getting started and running ansible on managed nodes. 
+
+To configure this playbook:
+
+1. Create a `hosts` file from etc_example/hosts, change the info according to your environment.
+2. Make sure the `ansible_ssh_user` you defined in  `hosts` have sudo privilege on target nodes.
 
 ## test connection
 ```
 ansible -i hosts all -m ping -k
 ```
 
-## setup environment
+## setup ssh
 ```
-ansible-playbook -i hosts site.yml -kK
+ansible-playbook -i hosts playbooks/setup_ssh.yml -kK
 ```
 
-> Note: To run this playbook, you need to have a user with sudo privilege on managed nodes at first. And the user needs be defined by `ansible_ssh_user` in the `hosts` file. 
+## bootstrap servers
+```
+ansible-playbook -i hosts site.yml
+```

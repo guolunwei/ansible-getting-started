@@ -1,5 +1,0 @@
----
-- name: copy ssh key
-  authorized_key:
-    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-    user: "{{ ansible_ssh_user }}"

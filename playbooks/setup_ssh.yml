@@ -1,0 +1,21 @@
+---
+- name: Push ssh key and grant sudo on remote user
+  hosts: all
+  gather_facts: no
+
+  tasks: 
+    - name: Add public key to remote user's authorized_keys
+      authorized_key:
+        user: "{{ ansible_ssh_user }}"
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"      
+ 
+    - name: Grant remote user passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers.d/ansible-users
+        state: present
+        create: yes
+        mode: '0640'
+        regexp: '^{{ ansible_ssh_user }}'
+        line: '{{ ansible_ssh_user }} ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+      become: true 

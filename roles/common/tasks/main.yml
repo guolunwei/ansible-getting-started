@@ -1,4 +1,3 @@
 ---
-- include: push_ssh_keys.yml
-- include: sudo_no_passwd.yml
-- include: add_hosts.yml
+- include_tasks: set_hostname.yml
+- include_tasks: add_hosts.yml

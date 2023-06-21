@@ -1,5 +1,19 @@
 ---
-- name: replace repo
-  copy:
-    src: sources.list
+- name: Enable ustc bionic apt repository
+  copy: 	
+    content: |
+      deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+      deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+      deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+      deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+      deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+      deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+      deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+      deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+      deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+      deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
     dest: /etc/apt/sources.list
+
+- name: Update apt cache
+  apt:
+    update_cache: yes

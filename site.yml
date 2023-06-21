@@ -1,15 +1,22 @@
 ---
-- hosts: all
+- name: Apply role common
+  gather_facts: no
+  hosts: all
+  become: yes
+  roles:
+    - role: common
+
+- name: Change repo source
   gather_facts: yes
+  hosts: all
   become: yes
 
   tasks:
     - include_role: 
-        name: common
-    - include_role: 
         name: centos
       when:
         - ansible_facts['distribution'] =="CentOS"
+
     - include_role: 
         name: ubuntu
       when:
