@@ -6,17 +6,18 @@ To configure this playbook:
 1. Create a `hosts` file from etc_example/hosts, change the info according to your environment.
 2. Make sure the `ansible_ssh_user` you defined in  `hosts` have sudo privilege on target nodes.
 
-## test connection
+## netplan for ubuntu
 ```
-ansible -i hosts all -m ping -k
+cd playbooks/netplan/
+ansible-playbook -i inventory main.yml -kK
 ```
 
 ## setup ssh
 ```
-ansible-playbook -i hosts playbooks/setup_ssh.yml -kK
+ansible-playbook -i etc_example/hosts playbooks/setup_ssh.yml -kK
 ```
 
 ## bootstrap servers
 ```
-ansible-playbook -i hosts site.yml
+ansible-playbook -i etc_example/hosts site.yml
 ```
