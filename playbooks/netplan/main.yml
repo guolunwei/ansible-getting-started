@@ -9,8 +9,8 @@
         src: 01-netcfg.yaml.j2
         dest: /etc/netplan/01-netcfg.yaml
         backup: yes
-      notify: netplan generate config
+      notify: netplan apply
 
   handlers:
-    - name: netplan generate config
+    - name: netplan apply
       command: netplan apply
