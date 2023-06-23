@@ -13,7 +13,5 @@
       deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
       deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
     dest: /etc/apt/sources.list
+  notify: Update apt cache
 
-- name: Update apt cache
-  apt:
-    update_cache: yes

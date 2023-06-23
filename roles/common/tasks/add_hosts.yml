@@ -5,5 +5,5 @@
     block: |
         {% for host in groups['all'] %}
         {% set hostnames = hostvars[host]['inventory_hostname'] %}
-        {{ hostvars[host]['ansible_host'] }}   {{ hostnames }}
+        {{ hostvars[host]['ansible_host'] }} {{ hostnames }}
         {% endfor %}
